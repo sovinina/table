@@ -27,4 +27,4 @@
 - React
 - JavaScript (ES6+)
 - HTML / CSS
-- Fetch API (для HTTP-запросов)
+- Fetch API 

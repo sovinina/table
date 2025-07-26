@@ -1,0 +1,66 @@
+.back{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.329);
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+
+.userCard{
+    height: fit-content;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.userData{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.biometric{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.name{
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.heading{
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 6px;
+}
+
+.userCardHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.closeBtn{
+    height: fit-content;
+    border:none;
+    background: none;
+    cursor: pointer;
+
+    & svg{
+        fill: #B50404;
+        transition: fill 0.2s;
+    }
+    
+    & svg:hover{
+        fill: #6d0d0d;
+    }
+    
+}
+

@@ -1,0 +1,31 @@
+:root {
+  --main-color: #216290;
+  --light-main-color: #e1f1fc;
+  --hover-color: #c0d1dd;
+  --bg-color:#fff;
+
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--main-color);
+  background-color: var(--bg-color);
+
+}
+
+
+
+#root {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+  
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+

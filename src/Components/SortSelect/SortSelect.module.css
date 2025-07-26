@@ -1,0 +1,30 @@
+.selectWrapper select{
+    background-color:transparent;
+    color:transparent;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    width: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.selectWrapper{
+    display: inline-block;
+    position: relative;
+    width: fit-content;
+}
+
+.selectWrapper::after{
+    content: url('src/assets/arrow.svg');
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; 
+    font-size: 12px;
+    }
+
+.selectWrapper option{
+    color: var(--main-color);
+    padding: 3px 6px;
+}

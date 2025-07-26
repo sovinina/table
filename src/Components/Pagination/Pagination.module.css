@@ -1,0 +1,19 @@
+.pagination{
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+
+    & button{
+        background-color: var(--light-main-color);
+        padding: 2px 8px;
+        border: 1px solid var(--hover-color);
+        border-radius: 15px;
+        cursor: pointer;
+
+        &:hover{
+            background-color: var(--hover-color);
+        }
+    }
+}

@@ -1,0 +1,23 @@
+.filter{
+    width: fit-content;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    padding: 10px 20px;
+
+    &>p{
+        font-weight: 500;
+    }
+
+    & label{
+        display: block;
+
+        & input{
+            margin-right: 8px;
+        }
+    }
+}
+
+/* .radioBtns{
+    display: flex;
+    flex-direction: column;
+} */

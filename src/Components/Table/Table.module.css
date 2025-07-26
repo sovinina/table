@@ -1,0 +1,38 @@
+.table{
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1400px;
+
+    & th,
+    & td{
+        border: 1px solid var(--main-color);
+        padding: 4px 8px;
+    }
+}
+
+
+.sortBtn{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.userTr{
+    cursor:pointer;
+    transition: background 0.2s;
+
+    &:nth-child(odd){
+        background-color: var(--light-main-color);
+    }
+
+    &:hover{
+        background-color: var(--hover-color);
+    }
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
