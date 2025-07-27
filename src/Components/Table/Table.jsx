@@ -157,7 +157,7 @@ export const Table = () => {
                 )}
             </div>
             
-            {isModalOpen && <User user={user} onClose={setModal} />}
+            {isModalOpen && <User user={user} onClose={() => setModal(false)} />}
             <table className={styles.table}>
                 <thead>
                     <tr>
