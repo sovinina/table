@@ -6,6 +6,58 @@ import { Pagination } from '../Pagination/Pagination';
 import { SortSelect } from '../SortSelect/SortSelect';
 import { Filter } from '../Filter/Filter';
 
+const tableHeads = [
+    'lastName',
+    'firstName',
+    'maidenName',
+    'age',
+    'gender',
+    'phone',
+    'email',
+    'country',
+    'city'
+]
+
+const headers = {
+    lastName: "Фамилия",
+    firstName: "Имя",
+    maidenName: "Отчество",
+    age: "Возраст",
+    gender: "Пол",
+    phone: "Номер телефона",
+    email: "Email",
+    country: "Страна",
+    city: "Город"
+  };
+
+const THs = ({ columnKey, text, columnWidth, setSortBy, setOrder, sortBy, order, onMouseDown }) => {
+    const hasSortSelect = columnKey === 'country' || columnKey === 'city' || columnKey === 'email' ? false : true
+    return(
+        <th
+            style={{
+                width: columnWidth[columnKey] + 'px',
+                minWidth: '50px'
+                }}
+            >
+            {text}
+            {hasSortSelect && (
+                <SortSelect 
+                    elName={columnKey}
+                    setSortBy={setSortBy} 
+                    setOrder={setOrder} 
+                    value = {sortBy === columnKey ? order : 'def'} 
+                />
+            )}
+            <div 
+                className={styles.resizer}
+                onMouseDown={(e) => onMouseDown(e, columnKey)}
+            >
+                |
+            </div>
+        </th>
+    )
+}
+
 export const Table = () => {
     const [data, setData] = useState(null);
     const [isLoading, setLoading] = useState(false);
@@ -22,10 +74,43 @@ export const Table = () => {
     const [page, setPage] = useState(1);
     const [elemsOnPage, setElemsOnPage] = useState(5);
     const [totalPages, setTotalPages] = useState(null);
+    const [columnWidth, setColumnWidths] = useState({
+        lastName: 150,
+        firstName: 150,
+        maidenName: 150,
+        age: 50,
+        gender: 80,
+        phone: 150,
+        email:100,
+        country:100,
+        city: 150
+    })
 
     const handleRowClick = (userData) => {
         setUser(userData);
         setModal(true);
+    }
+
+    const onMouseDown = (e, columnKey) => {
+        const startX = e.clientX;
+        const startWidth = columnWidth[columnKey];
+
+        const onMouseMove = (e) => {
+            const deltaX = e.clientX - startX;
+            const newWidth = Math.max(50, startWidth + deltaX);
+            setColumnWidths(prev => ({
+                ...prev,
+                [columnKey]: newWidth
+            }))
+        };
+
+        const onMouseUp = () => {
+            window.removeEventListener('mousemove', onMouseMove);
+            window.removeEventListener('mouseup', onMouseUp);
+        }
+
+        window.addEventListener('mousemove', onMouseMove);
+        window.addEventListener('mouseup', onMouseUp);
     }
 
     useEffect(() => {
@@ -76,69 +161,20 @@ export const Table = () => {
             <table className={styles.table}>
                 <thead>
                     <tr>
-                        <th>
-                            Фамилия
-                            <SortSelect 
-                                elName='lastName'
-                                setSortBy={setSortBy} 
+                        {tableHeads.map(key => 
+                            <THs 
+                                key={key}
+                                columnKey={key} 
+                                text={headers[key]} 
+                                columnWidth={columnWidth} 
                                 setOrder={setOrder} 
-                                value = {sortBy === 'lastName' ? order : 'def'} 
-                            />
-                        </th>
-                        <th>
-                            Имя
-                            <SortSelect 
-                                elName='firstName' 
                                 setSortBy={setSortBy} 
-                                setOrder={setOrder} 
-                                value = {sortBy === 'firstName' ? order : 'def'} 
+                                sortBy={sortBy} 
+                                order={order}
+                                onMouseDown={onMouseDown}
                             />
-                        </th>
-                        <th>
-                            Отчество
-                            <SortSelect 
-                                elName='maidenName' 
-                                setSortBy={setSortBy} 
-                                setOrder={setOrder} 
-                                value = {sortBy === 'maidenName' ? order : 'def'} 
-                            />
-                        </th>
-                        <th>
-                            Возраст
-                            <SortSelect 
-                                elName='age' 
-                                setSortBy={setSortBy} 
-                                setOrder={setOrder}  
-                                value = {sortBy === 'age' ? order : 'def'} 
-                            />
-                        </th>
-                        <th>
-                            Пол
-                            <SortSelect 
-                                elName='gender' 
-                                setSortBy={setSortBy} 
-                                setOrder={setOrder}  
-                                value = {sortBy === 'gender' ? order : 'def'} 
-                            />
-                        </th>
-                        <th>
-                            Номер телефона
-                            <SortSelect 
-                                elName='phone' 
-                                setSortBy={setSortBy} 
-                                setOrder={setOrder}  
-                                value = {sortBy === 'phone' ? order : 'def'} 
-                            />
-                        </th>
-                        <th>
-                            Email
-                        </th>
-                        <th>
-                            Страна
-                        </th>
-                        <th>
-                            Город
-                        </th>
+
+                        )}
                     </tr>
                 </thead>
                 <tbody>

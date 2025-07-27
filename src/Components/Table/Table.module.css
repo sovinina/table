@@ -2,6 +2,8 @@
     border-collapse: collapse;
     width: 100%;
     max-width: 1400px;
+    table-layout: fixed;
+    overflow-x: auto;
 
     & th,
     & td{
@@ -10,6 +12,10 @@
     }
 }
 
+.resizer{
+    cursor: col-resize;
+    user-select: none;
+}
 
 .sortBtn{
     background-color: transparent;
