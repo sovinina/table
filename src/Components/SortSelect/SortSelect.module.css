@@ -15,7 +15,7 @@
 }
 
 .selectWrapper::after{
-    content: url('src/assets/arrow.svg');
+    content: url('../../assets/arrow.svg');
     position: absolute;
     right: 5px;
     top: 50%;
