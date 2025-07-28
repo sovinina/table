@@ -2,13 +2,20 @@
     border-collapse: collapse;
     width: 100%;
     max-width: 1400px;
+    table-layout: fixed;
+    overflow-x: auto;
 
     & th,
     & td{
         border: 1px solid var(--main-color);
         padding: 4px 8px;
     }
+
+    & th{
+        position: relative;
+    }
 }
+
 
 
 .sortBtn{
