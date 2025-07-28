@@ -3,8 +3,8 @@ import styles from './Table.module.css';
 import { User } from '../User/User'
 import { PageCountSelect } from '../PageCountSelect/PageCountSelect';
 import { Pagination } from '../Pagination/Pagination';
-import { SortSelect } from '../SortSelect/SortSelect';
 import { Filter } from '../Filter/Filter';
+import { THs } from '../TableHeads/TableHeads';
 
 const tableHeads = [
     'lastName',
@@ -29,34 +29,6 @@ const headers = {
     country: "Страна",
     city: "Город"
   };
-
-const THs = ({ columnKey, text, columnWidth, setSortBy, setOrder, sortBy, order, onMouseDown }) => {
-    const hasSortSelect = columnKey === 'country' || columnKey === 'city' || columnKey === 'email' ? false : true
-    return(
-        <th
-            style={{
-                width: columnWidth[columnKey] + 'px',
-                minWidth: '50px'
-                }}
-            >
-            {text}
-            {hasSortSelect && (
-                <SortSelect 
-                    elName={columnKey}
-                    setSortBy={setSortBy} 
-                    setOrder={setOrder} 
-                    value = {sortBy === columnKey ? order : 'def'} 
-                />
-            )}
-            <div 
-                className={styles.resizer}
-                onMouseDown={(e) => onMouseDown(e, columnKey)}
-            >
-                
-            </div>
-        </th>
-    )
-}
 
 export const Table = () => {
     const [data, setData] = useState(null);
