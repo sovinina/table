@@ -10,11 +10,22 @@
         border: 1px solid var(--main-color);
         padding: 4px 8px;
     }
+
+    & th{
+        position: relative;
+    }
 }
 
 .resizer{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
     cursor: col-resize;
     user-select: none;
+    margin-left: 5px;
+    border-right: 1px solid var(--main-color);
 }
 
 .sortBtn{

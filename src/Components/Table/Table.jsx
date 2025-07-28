@@ -52,7 +52,7 @@ const THs = ({ columnKey, text, columnWidth, setSortBy, setOrder, sortBy, order,
                 className={styles.resizer}
                 onMouseDown={(e) => onMouseDown(e, columnKey)}
             >
-                |
+                
             </div>
         </th>
     )
@@ -75,15 +75,15 @@ export const Table = () => {
     const [elemsOnPage, setElemsOnPage] = useState(5);
     const [totalPages, setTotalPages] = useState(null);
     const [columnWidth, setColumnWidths] = useState({
-        lastName: 150,
-        firstName: 150,
-        maidenName: 150,
-        age: 50,
+        lastName: 100,
+        firstName: 100,
+        maidenName: 100,
+        age: 80,
         gender: 80,
         phone: 150,
-        email:100,
+        email:200,
         country:100,
-        city: 150
+        city: 100
     })
 
     const handleRowClick = (userData) => {
